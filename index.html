@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>JOIN THE DOTS</h1>
+    <div class="parameters">
+      <div class="options">
+        <h3>Players</h3>
+        <select  id="numPlayers">
+          <option value='2' >2</option>
+          <option value ='3'>3</option>
+          <option value ='4'>4</option>
+          <option value ='5'>5</option>
+          <option value ='20'>20</option>
+        </select>
+      </div>
+      <div class="options">
+        <h3>Grid Size</h3>
+        <select id="gridSize">
+          <option value='3' >3</option>
+          <option value ='4'>4</option>
+          <option value ='5'>5</option>
+          <option value ='8'>8</option>
+          <option value ='25'>25</option>
+        </select>
+      </div>
+      <button id="playGame" class="playGame">Play</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div id="players" class="players">
+
+    </div>
+    <div id="grid">
+
+    </div>
+  </div>
+  <script src="js/dotsObj.js"></script>
+</body>
+</html>
