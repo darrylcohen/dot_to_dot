@@ -18,6 +18,7 @@ var viewer = function() {
   var currentPlayer;
   var playerNum;
   var colour;
+  var interval;
 
   var viewerI = {
 
@@ -80,18 +81,20 @@ var viewer = function() {
         playersDiv.appendChild(playerDiv);
       }
       currentPlayer = document.querySelector('#p1');
-      currentPlayer.classList.toggle('playerBorder');
+      // currentPlayer.classList.toggle('playerBorder');
 
       // currentPlayer.style.outlineColor = players[0].getColour();
     },
 
     // Changes the players turn
     changePlayer : function(player) {
-      currentPlayer.classList.toggle('playerBorder')
+      clearInterval(interval);
+      currentPlayer.classList.remove('playerBorder')
       currentPlayer = document.querySelector('#p' + player.getPlayerNumber())
       playerNum = player.getPlayerNumber();
-      colour = player.getColour();
-      currentPlayer.classList.toggle('playerBorder');
+      interval = setInterval(function() {
+        currentPlayer.classList.toggle ('playerBorder')
+      },500)
       // currentPlayer.style.outlineColor = colour;
     },
 
@@ -338,6 +341,7 @@ var manager = function() {
       managerI.createPlayers(numberPlayers);
       totalPlayers = numberPlayers;
       myViewer.drawPlayers(players);
+      myViewer.changePlayer(players[0]);
       myViewer.drawGrid(myGrid.getGrid(), numberPlayers);
     },
 

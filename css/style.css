@@ -9,39 +9,36 @@ body {
 
 }
 header {
-  /*background-image: url("https://tse4.mm.bing.net/th?id=OIP.qQCu_JnV7j9NTV1aCp925wEsEs");*/
-  /*display:flex;
-  justify-content: center;*/
   background-color: white;
   background: linear-gradient(red,  blue, white);
 }
 
 h1 {
-  /*padding: 300px 0;*/
   margin: 0;
   font-size:4em;
   color: white;
   display:inline;
   text-shadow: 5px 5px 10px midnightblue;
-
 }
+
 h3 {
   color: white;
     margin: 0.3em;
 }
+
 .parameters {
   display : flex;
   flex-direction: row;
   justify-content: center;
   align-items:flex-end;
   margin: 10px auto;
-  /*display:inline;*/
-
 }
+
 .options {
   margin: 20px;
   width:100px;
 }
+
 select {
   width:100%;
   font-size:150%;
@@ -58,25 +55,19 @@ button {
   justify-content: center;
   flex-wrap: wrap;
   margin: 2em;
-  /*color: white;*/
 }
+
 .player {
   margin:  5px 20px;
-  /*width:200px;*/
   text-align: center;
   padding: 0 2em ;
   border: 6px solid blue ;
-
 }
-/*.mainScreen {
-  background-image: url("http://www.dr-mikes-math-games-for-kids.com/images/DotsAndBoxes2.png");
-
-  height: 100vh;
-}*/
 
 .container {
 
 }
+
 #grid {
   display:flex;
   flex-direction: column;
@@ -85,7 +76,6 @@ button {
   display:inline-block;
   background-color: white;
   margin: 2em;
-
 }
 
 .row {
@@ -97,22 +87,19 @@ button {
 .block {
   width:40px;
   height: 40px;
-  /*display: inline-block;*/
-  /*border-radius: 40%;*/
-
 }
 
 .point {
   background-color: lightgrey;
   border:10px solid white;
 }
+
 .wall {
   border:1px solid red;
   border-radius: 30%;
 }
 
 .house {
-  /*background-color: red;*/
   background-image: url("http://www.thepointless.com/images/reddot.jpg");
   background-size: cover;
   border-radius: 50%;
@@ -127,21 +114,16 @@ button {
   margin:0;
   border-radius: 50%;
   padding-top: 0.1em;
-
 }
+
 .playerBorder {
   outline: 12px solid blue;
   color : black;
-
 }
+
 .playerScore {
-  /*border: 5px solid black;
-  border-radius: 20%;*/
-  /*width:60%;*/
   margin: 0 auto;
   font-size:150%;
   margin-bottom: 0.2em;
   color : white;
-
-
 }
