@@ -11,9 +11,9 @@ Create a game that can be plyed by 2 or more players. I chose the game of Dot to
 
 My Solution
 
-The game can be viewd on my website as well as on github at
+[The game can be viewed on my website as well as on github at] (https://darrylcohen.github.io/dot_to_dot/)
 
-[My Design] https://github.com/darrylcohen/dot_to_dot/blob/master/design.pdf 
+[My Design](https://github.com/darrylcohen/dot_to_dot/blob/master/design.pdf)
 
 [Please visit my web site](https://www.darrylcohen.com.au)
 
