@@ -5,11 +5,11 @@ Darryl Cohen
 
 <img src=https://ibin.co/3a58UgVskC6U.jpg width="300">
 
-The Requirements
+## The Requirements
 
 Create a game that can be played by 2 or more players alternating turns. I chose the game of Dot to Dot
 
-My Solution
+## My Solution
 
 [Play the Game](https://darrylcohen.github.io/dot_to_dot/)
 
