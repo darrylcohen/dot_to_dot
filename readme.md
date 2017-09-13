@@ -15,6 +15,8 @@ Create a game that can be played by 2 or more players alternating turns. I chose
 
 [My Design](https://github.com/darrylcohen/dot_to_dot/blob/master/design.pdf)
 
+## My Web Site
+
 [Please visit my web site](https://www.darrylcohen.com.au)
 
 <a href="https://www.darrylcohen.com.au"> <img src=https://i.imgur.com/kbAnu4b.jpg width="300"></a>
