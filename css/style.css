@@ -113,6 +113,7 @@ button {
   background-image: url("http://www.thepointless.com/images/reddot.jpg");
   background-size: cover;
   border-radius: 50%;
+
 }
 
 .clicked {
@@ -124,6 +125,7 @@ button {
   margin:0;
   /*border-radius: 50%;*/
   padding-top: 0.1em;
+
 }
 
 .playerBorder {
@@ -143,12 +145,12 @@ button {
   font-weight: bold;
   text-shadow: 2px 2px white;
   transform: rotate(0deg);
-  animation-name: example;
+  animation-name: spinner;
   animation-duration: 5s;
   padding: 10px;
 
 }
-@keyframes example {
+@keyframes spinner {
     from {color: red;}
     to {color: blue;}
     from {font-size: 10%;}

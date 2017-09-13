@@ -57,6 +57,8 @@ var viewer = function() {
               block.style.backgroundColor = colour;
               block.textContent = playerNum
               myManager.updateScore();
+              var audio = document.querySelector('#myAudio');
+              audio.play();
             }
           }
         }
