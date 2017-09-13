@@ -3,7 +3,7 @@ Darryl Cohen
 
 ### **Welcome to _DOTs and Boxes_**
 
-<img src=https://ibin.co/3a58UgVskC6U.jpg width="300">
+<img src=https://ibin.co/3aBm7hSOEYKh.jpg width="300">
 
 ## The Requirements
 
