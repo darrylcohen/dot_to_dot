@@ -11,7 +11,7 @@ Create a game that can be played by 2 or more players alternating turns. I chose
 
 ## My Solution
 
-[Play the Game](https://darrylcohen.github.io/dot_to_dot/)
+[Play the Game](https://darrylcohen.github.io/dots_and_boxes/)
 
 [My Design](https://github.com/darrylcohen/dot_to_dot/blob/master/design.pdf)
 
