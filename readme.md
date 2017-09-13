@@ -1,13 +1,13 @@
 Darryl Cohen
 ============
 
-### **Welcome to _DOT to DOT_**
+### **Welcome to _DOTs and Boxes_**
 
 <img src=https://ibin.co/3a58UgVskC6U.jpg width="300">
 
-The Problem
+The Requirements
 
-Create a game that can be plyed by 2 or more players. I chose the game of Dot to Dot
+Create a game that can be played by 2 or more players alternating turns. I chose the game of Dot to Dot
 
 My Solution
 

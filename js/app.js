@@ -7,6 +7,14 @@
 
 //Default the number of players
 const PLAYER_DEFAULT = 2;
+const POINT = 'P';
+const HOUSE = 'H';
+const SURROUNDED_HOUSE = 'S';
+const WALL_HORIONTAL = 'WH';
+const WALL_VERTICAL = 'WV'
+const CLICKED_WALL = 'C';
+const VERTICAL = 'V';
+const HORIZONTAL = 'H';
 
 // Viewer object to deal with input and output to the screen
 var viewer = function() {
@@ -57,7 +65,7 @@ var viewer = function() {
       //Event lisener to play the game. Tells the manager to play the game
       playBTN.addEventListener('click',function(){
         myManager.playGame(Number(numberPlayers.value), gridSize.value)
-        });
+      });
     },
 
     // Creates the number of players in the game and assigns id's for later use
@@ -88,6 +96,7 @@ var viewer = function() {
 
     // Changes the players turn
     changePlayer : function(player) {
+      console.log('player num ' + player.getPlayerNumber());
       clearInterval(interval);
       currentPlayer.classList.remove('playerBorder')
       currentPlayer = document.querySelector('#p' + player.getPlayerNumber())
@@ -110,6 +119,21 @@ var viewer = function() {
       document.querySelector('#s' + player.getPlayerNumber()).textContent = player.getScore();
     },
 
+    showWinner : function (message) {
+      clearInterval(interval);
+      currentPlayer.classList.remove('playerBorder')
+      viewerI.clearGrid();
+      var winnerDiv = document.createElement("div");
+      var winnerMessage = document.createElement("h2");
+      winnerMessage.textContent = message;
+      winnerMessage.classList.add("winner");
+      myGrid.appendChild(winnerMessage);
+      setTimeout(function(){
+        myManager.playGame(Number(numberPlayers.value), gridSize.value)
+      },10000)
+
+    },
+
     //Draws the grid for the game
     drawGrid : function(aGrid, numberPlayers) {
       viewerI.clearGrid();
@@ -126,12 +150,14 @@ var viewer = function() {
           block.setAttribute('data-pos', count);
           block.id = count;
 
-          if (aGrid[i][j] === "P") {
+          if (aGrid[i][j] === POINT) {
             block.className = "block point";
-          } else if (aGrid[i][j] === "H") {
+          } else if (aGrid[i][j] === HOUSE) {
             block.className = "block house"
+          } else if (aGrid[i][j] === WALL_HORIONTAL){
+            block.className = "block wall_horizontal"
           } else {
-            block.className = "block wall"
+            block.className = "block wall_vertical"
           }
           row.appendChild(block)
           count++;
@@ -196,7 +222,8 @@ var grid = function() {
   const POINT = 'P';
   const HOUSE = 'H';
   const SURROUNDED_HOUSE = 'S';
-  const WALL = 'W';
+  const WALL_HORIONTAL = 'WH';
+  const WALL_VERTICAL = 'WV'
   const CLICKED_WALL = 'C';
   const VERTICAL = 'V';
   const HORIZONTAL = 'H';
@@ -215,8 +242,10 @@ var grid = function() {
             row[j] = POINT
           } else if (i % 2 === 1 && j % 2 === 1) {
             row[j] = HOUSE
+          } else if (i % 2 === 1 && j % 2 === 0) {
+            row[j] = WALL_VERTICAL
           } else {
-            row[j] = WALL
+            row[j] = WALL_HORIONTAL
           }
         }
         myGrid.push(row);
@@ -235,7 +264,7 @@ var grid = function() {
     // Checks to see if a wall has been clicked thast hasn't been clicked before
     isLegalMove : function(row, col) {
       result = false;
-      if (myGrid[row][col] === WALL) {
+      if (myGrid[row][col] === WALL_HORIONTAL || myGrid[row][col] === WALL_VERTICAL) {
         myGrid[row][col] = CLICKED_WALL;
         result = true;
       }
@@ -325,8 +354,10 @@ var manager = function() {
   var currentPlayer = player();
   var playerNum = 1;
   var totalPlayers;
+  var totalHouses = 0;
+  var totalClickedHouses = 0;
   // var colours = ['PaleVioletRed ','orange','SandyBrown ','PaleGreen  ','Plum']
-  var colours = ['red','red','red','red','red']
+  var colours = ['red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red']
   var managerI = {
     initialise : function() {
       myViewer.initialise(managerI);
@@ -337,9 +368,14 @@ var manager = function() {
 
     //Starts the game
     playGame : function(numberPlayers, gridSize) {
+      totalHouses = gridSize * gridSize;
+      totalClickedHouses = 0;
+      players = [];
+      currentPlayer = player();
       myGrid.initialise(gridSize);
       managerI.createPlayers(numberPlayers);
       totalPlayers = numberPlayers;
+      playerNum = 1;
       myViewer.drawPlayers(players);
       myViewer.changePlayer(players[0]);
       myViewer.drawGrid(myGrid.getGrid(), numberPlayers);
@@ -352,6 +388,7 @@ var manager = function() {
         var myPlayer = player().initialise(i,colours[i-1]);
         players.push(myPlayer);
       }
+
     },
 
     //Asks the grid if the click is legal
@@ -377,6 +414,32 @@ var manager = function() {
     updateScore : function () {
       currentPlayer.incrementScore();
       myViewer.updateScore(currentPlayer)
+      totalClickedHouses++;
+      if (totalClickedHouses === totalHouses) {
+        myViewer.showWinner(managerI.getWinningPlayer());
+      }
+    },
+
+    getWinningPlayer : function () {
+      var highScore = 0;
+      var result = [];
+      // Find the highest score
+      players.forEach(function(player){
+        if (player.getScore() > highScore) {
+          highScore = player.getScore();
+        }
+      });
+      //See how many players got the highest score
+      players.forEach(function(player){
+        if (player.getScore() === highScore) {
+          result.push(player);
+        }
+      });
+      if (result.length > 1) {
+        return "Game was Tied !!!!!"
+      } else {
+        return "Player " + result[0].getPlayerNumber() + " : Winner !!!!"
+      }
     },
 
     //Set the current player
