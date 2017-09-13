@@ -154,14 +154,14 @@ button {
     from {color: red;}
     to {color: blue;}
     from {font-size: 10%;}
-    to {font-size: 400%;}
+    to {font-size: 250%;}
     from {  transform: rotate(0deg);}
-    to {  transform: rotate(14400deg);}
+    to {  transform: rotate(2880deg);}
 }
 
 footer {
   /*background-color: white;*/
-  background: linear-gradient(red,  blue, white);
+  background: linear-gradient(white,  blue, red);
   color: white;
   font-size:150%;
   padding: 1em;
