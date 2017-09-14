@@ -44,7 +44,6 @@ var viewer = function() {
         // are surrounded by clicks
         if(myManager.isLegalMove(row, col)) {
           event.target.classList.add('clicked')
-
           var houses = myManager.isHouseSurrounded(pos, row, col) // houses an array
           if (houses.length === 0 ){
             myManager.changePlayer();
@@ -53,12 +52,9 @@ var viewer = function() {
               var block = document.getElementById(houses[i]);
               block.classList.remove('house')
               block.classList.add('clicked')
-              // block.textContent = playerNum;
-              block.style.backgroundColor = colour;
+              // block.style.backgroundColor = colour;
               block.textContent = playerNum
               myManager.updateScore();
-              var audio = document.querySelector('#myAudio');
-              audio.play();
             }
           }
         }
@@ -98,7 +94,6 @@ var viewer = function() {
 
     // Changes the players turn
     changePlayer : function(player) {
-      console.log('player num ' + player.getPlayerNumber());
       clearInterval(interval);
       currentPlayer.classList.remove('playerBorder')
       currentPlayer = document.querySelector('#p' + player.getPlayerNumber())
@@ -130,6 +125,9 @@ var viewer = function() {
       winnerMessage.textContent = message;
       winnerMessage.classList.add("winner");
       myGrid.appendChild(winnerMessage);
+      var audio = document.querySelector('#myAudio');
+      audio.play();
+
       setTimeout(function(){
         myManager.playGame(Number(numberPlayers.value), gridSize.value)
       },10000)
