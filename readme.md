@@ -31,6 +31,7 @@ A better solution, and most probably not the right way but still better is to ha
 
 Add instructions to the Game
 
+### My Design
 [Click here to see my design ](https://github.com/darrylcohen/dot_to_dot/blob/master/design.pdf)
 
 ### Play the Game
