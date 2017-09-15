@@ -33,8 +33,8 @@ var viewer = function() {
   // Initialise : creat event listeners when the viewer object is created
     initialise : function(myManager) {
 
-      // Listen for eent clicks on the grid. Ask the manager if its a valid click
-      // then chnage the display of the position clicked
+      // Listen for event clicks on the grid. Ask the manager if its a valid click
+      // then change the display of the position clicked
       myGrid.addEventListener('click', function(event){
         var pos = Number(event.target.getAttribute('data-pos'));
         var row = Number(event.target.getAttribute('data-row'));
@@ -71,6 +71,7 @@ var viewer = function() {
       var playersDiv = document.querySelector('#players')
       viewerI.clearPlayers(playersDiv);
 
+      //Create a player with score details
       for (var i = 0; i < players.length; i++) {
         var playerDiv = document.createElement('div');
         var playerName = document.createElement('h3');
@@ -87,9 +88,6 @@ var viewer = function() {
         playersDiv.appendChild(playerDiv);
       }
       currentPlayer = document.querySelector('#p1');
-      // currentPlayer.classList.toggle('playerBorder');
-
-      // currentPlayer.style.outlineColor = players[0].getColour();
     },
 
     // Changes the players turn
@@ -101,7 +99,6 @@ var viewer = function() {
       interval = setInterval(function() {
         currentPlayer.classList.toggle ('playerBorder')
       },500)
-      // currentPlayer.style.outlineColor = colour;
     },
 
     //Clears the current players for a new game
@@ -128,6 +125,7 @@ var viewer = function() {
       var audio = document.querySelector('#myAudio');
       audio.play();
 
+      //Set a time out at the end of a game to start a new game
       setTimeout(function(){
         myManager.playGame(Number(numberPlayers.value), gridSize.value)
       },10000)
@@ -150,6 +148,7 @@ var viewer = function() {
           block.setAttribute('data-pos', count);
           block.id = count;
 
+          //Allocates a class depending on a position in the Grid
           if (aGrid[i][j] === POINT) {
             block.className = "block point";
           } else if (aGrid[i][j] === HOUSE) {
@@ -179,7 +178,7 @@ var viewer = function() {
   return viewerI
 }
 
-// Playeer object which has a score, number and colour
+// Player object which has a score, number and colour
 var player = function() {
   var score = 0;
   var playerNumber;
@@ -219,14 +218,6 @@ var player = function() {
 
 // Grid has logic to see what has been clicked
 var grid = function() {
-  const POINT = 'P';
-  const HOUSE = 'H';
-  const SURROUNDED_HOUSE = 'S';
-  const WALL_HORIONTAL = 'WH';
-  const WALL_VERTICAL = 'WV'
-  const CLICKED_WALL = 'C';
-  const VERTICAL = 'V';
-  const HORIZONTAL = 'H';
   var myGrid = []
   var gridI = {
 
@@ -234,6 +225,7 @@ var grid = function() {
     initialise : function (aGridSize) {
       myGrid = []
 
+      //Puts a character in the grid depending on position. This character is used to allocate a class when drawing the grid
       gridSize = aGridSize * 2 + 1;
       for (var i = 0; i < gridSize ; i++) {
         var row = []
@@ -253,6 +245,7 @@ var grid = function() {
       }
     },
 
+    //Get the dimention of the Grid
     getGridSize : function() {
       return myGrid[0].length;
     },
@@ -308,7 +301,7 @@ var grid = function() {
     },
 
     //Checks if all walls clicked
-    areWallsAllClicked : function(leftArr, rightArr, topArr, bottomArr) {
+    isSurrounded : function(leftArr, rightArr, topArr, bottomArr) {
       result = false;
 
       if (myGrid[leftArr[0]][leftArr[1]] === CLICKED_WALL &&
@@ -337,7 +330,7 @@ var grid = function() {
       if (house < 0 || house > gridSize * gridSize - 1 ||
         myGrid[posCoords[0]][posCoords[1]] === SURROUNDED_HOUSE) {
         result = false
-      } else if (gridI.areWallsAllClicked(leftArr, rightArr, topArr, bottomArr)){
+      } else if (gridI.isSurrounded(leftArr, rightArr, topArr, bottomArr)){
         result = true;
       }
       return result;
@@ -356,8 +349,10 @@ var manager = function() {
   var totalPlayers;
   var totalHouses = 0;
   var totalClickedHouses = 0;
-  // var colours = ['PaleVioletRed ','orange','SandyBrown ','PaleGreen  ','Plum']
+
+  // Started off giving each player a different colour but made them all red
   var colours = ['red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red','red']
+
   var managerI = {
     initialise : function() {
       myViewer.initialise(managerI);
@@ -429,7 +424,8 @@ var manager = function() {
           highScore = player.getScore();
         }
       });
-      //See how many players got the highest score
+
+        //See how many players got the highest score
       players.forEach(function(player){
         if (player.getScore() === highScore) {
           result.push(player);
