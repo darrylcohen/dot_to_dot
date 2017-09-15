@@ -28,8 +28,9 @@ The idea of the design was to have loose coupling between objects. IE only the c
 A better solution, and most probably not the right way but still better is to have an Event Listener object that only listens to events and passes that information back to the controller.
 
 ### TO DO
+
 Add instructions to the Game
-http://www.darrylcohen.com.au/
+
 [Click here to see my design ](https://github.com/darrylcohen/dot_to_dot/blob/master/design.pdf)
 
 ### Play the Game
